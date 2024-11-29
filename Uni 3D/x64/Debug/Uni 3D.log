@@ -1,0 +1,7 @@
+﻿  The vcpkg manifest was disabled, but we found a manifest file in C:\Users\Szymon2\. You may want to enable vcpkg manifests in your properties page or pass /p:VcpkgEnableManifest=true to the msbuild invocation.
+  Renderer.cpp
+C:\Users\Szymon2\source\repos\Uni 3D\Uni 3D\DataStructures.h(110,1): warning C4267: "=": konwersja z "size_t" do "unsigned int", możliwa utrata danych
+C:\Users\Szymon2\source\repos\Uni 3D\Uni 3D\DataStructures.h(100): message : podczas kompilowania funkcji składowej „Handle Pool<ModelRender>::AppendEmpty(void)” klasy klasa szablon
+C:\Users\Szymon2\source\repos\Uni 3D\Uni 3D\DataStructures.h(48): message : zobacz odwołanie do kompilowanego tworzenia wystąpienia „Handle Pool<ModelRender>::AppendEmpty(void)” funkcji szablon
+C:\Users\Szymon2\source\repos\Uni 3D\Uni 3D\Renderer.h(26): message : zobacz odwołanie do kompilowanego tworzenia wystąpienia „Pool<ModelRender>” klasy klasa szablon
+  Uni 3D.vcxproj -> C:\Users\Szymon2\source\repos\Uni 3D\x64\Debug\Uni 3D.exe
