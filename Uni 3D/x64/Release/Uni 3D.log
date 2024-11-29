@@ -1,0 +1,20 @@
+﻿  Renderer.cpp
+C:\Users\blasz\source\repos\Uni 3D\DataStructures.h(110,24): warning C4267: "=": konwersja z "size_t" do "unsigned int", możliwa utrata danych
+  (kompilowanie pliku źródłowego „Renderer.cpp”)
+      C:\Users\blasz\source\repos\Uni 3D\DataStructures.h(110,24):
+      kontekst tworzenia wystąpienia szablonu (najpierw najstarszy) to
+          C:\Users\blasz\source\repos\Uni 3D\Renderer.h(26,20):
+          zobacz odwołanie do kompilowanego tworzenia wystąpienia „Pool<ModelRender>” klasy klasa szablon
+          C:\Users\blasz\source\repos\Uni 3D\DataStructures.h(99,9):
+          podczas kompilowania funkcji składowej „Handle Pool<ModelRender>::AppendEmpty(void)” klasy klasa szablon
+              C:\Users\blasz\source\repos\Uni 3D\DataStructures.h(48,19):
+              zobacz pierwsze odwołanie do elementu „Pool<ModelRender>::AppendEmpty” w „Pool<ModelRender>::Append”
+              C:\Users\blasz\source\repos\Uni 3D\Renderer.cpp(25,33):
+              zobacz pierwsze odwołanie do elementu „Pool<ModelRender>::Append” w „Renderer::Init”
+  
+  Trwa generowanie kodu
+  1 of 713 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
+  Zakończono generowanie kodu
+  Uni 3D.vcxproj -> C:\Users\blasz\source\repos\x64\Release\Uni 3D.exe

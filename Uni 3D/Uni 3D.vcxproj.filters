@@ -60,6 +60,9 @@
     <ClCompile Include="Light.cpp">
       <Filter>Pliki źródłowe\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="glad.c">
+      <Filter>Pliki źródłowe\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AABBCollision.h">

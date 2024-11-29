@@ -22,19 +22,35 @@ void Renderer::Init(Camera* camera)
 	pointLights.push_back(PointLight());
 	models.push_back(Model());
 
+	Handle mrHandle = modelRenders.Append(ModelRender());
+	modelRenders.Get(mrHandle).mID = 0;
+	modelRenders.Get(mrHandle).pos = vec3(0 * 10, 0, 0 * 10);
+	modelRenders.Get(mrHandle).rot = vec3(0, 0, 0);
+	modelRenders.Get(mrHandle).size = vec3(10, 10, 10);
+	modelRenders.Get(mrHandle).material.diffuse = vec3(0.9, 0.0, 0.0);
+	modelRenders.Get(mrHandle).material.specular = vec3(0.0, 0.5, 0.0);
 
-	for (int x = 0; x < 25; x++)
+	mrHandle = modelRenders.Append(ModelRender());
+	modelRenders.Get(mrHandle).mID = 0;
+	modelRenders.Get(mrHandle).pos = vec3(2 * 10, 0, 0 * 10);
+	modelRenders.Get(mrHandle).rot = vec3(0, 0, 0);
+	modelRenders.Get(mrHandle).size = vec3(10, 15, 10);
+	modelRenders.Get(mrHandle).material.diffuse = vec3(0.5, 0.5, 0.5);
+	modelRenders.Get(mrHandle).material.specular = vec3(0.9, 0.0, 0.0);
+
+	/*
+	for (int x = 0; x < 100; x++)
 	{
-		for (int y = 0; y < 25; y++)
+		for (int y = 0; y < 100; y++)
 		{
 			Handle mrHandle = modelRenders.Append(ModelRender());
 			modelRenders.Get(mrHandle).mID = 0;
-			modelRenders.Get(mrHandle).pos = vec3(x * 15, 0, y * 15);
+			modelRenders.Get(mrHandle).pos = vec3(x * 10, 0, y * 10);
 			modelRenders.Get(mrHandle).rot = vec3(0, 0, 0);
 			modelRenders.Get(mrHandle).size = vec3(10, 10, 10);
 		}
 	}
-
+	*/
 	glGenVertexArrays(1, &VAO);
 	glGenBuffers(1, &VBO);
 	glGenBuffers(1, &EBO);
@@ -122,14 +138,16 @@ void Renderer::Draw()
 
 	glClearColor(5.0f / 255, 178.0f / 255, 252.0f / 255, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	vec3 center = vec3(24 * 15 / 2.0f, 0, 15 * 24 / 2.0f);
+	vec3 center = vec3(100 * 15 / 2.0f, 0, 15 * 100 / 2.0f);
 
+	/*
 	for (int i = 1; i < modelRenders.data.size(); i++)
 	{
 		modelRenders.data[i].pos.y = 0;
 		modelRenders.data[i].pos.y =  20 * sin(distance(modelRenders.data[i].pos, center) / 25 + timer.time / 100);
 	}
-		
+	*/
+
 	for (int i = 1; i < modelRenders.data.size(); i++)
 	{
 		glBindVertexArray(models[modelRenders.data[i].mID].VAO);
