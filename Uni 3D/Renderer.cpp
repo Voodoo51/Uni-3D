@@ -21,15 +21,22 @@ void Renderer::Init(Camera* camera)
 
 	pointLights.push_back(PointLight());
 	models.push_back(Model());
-
-	Handle mrHandle = modelRenders.Append(ModelRender());
-	modelRenders.Get(mrHandle).mID = 0;
-	modelRenders.Get(mrHandle).pos = vec3(0 * 10, 0, 0 * 10);
-	modelRenders.Get(mrHandle).rot = vec3(0, 0, 0);
-	modelRenders.Get(mrHandle).size = vec3(10, 10, 10);
-	modelRenders.Get(mrHandle).material.diffuse = vec3(0.9, 0.0, 0.0);
-	modelRenders.Get(mrHandle).material.specular = vec3(0.0, 0.5, 0.0);
-
+	/*
+	for (int x = 0; x < 25; x++)
+	{
+		for (int y = 0; y < 25; y++)
+		{
+			Handle mrHandle = modelRenders.Append(ModelRender());
+			modelRenders.Get(mrHandle).mID = 0;
+			modelRenders.Get(mrHandle).pos = vec3(x * 10, 0, y * 10);
+			modelRenders.Get(mrHandle).rot = vec3(0, 0, 0);
+			modelRenders.Get(mrHandle).size = vec3(10, 10, 10);
+			modelRenders.Get(mrHandle).material.diffuse = vec3(0.9, 0.0, 0.0);
+			modelRenders.Get(mrHandle).material.specular = vec3(0.0, 0.5, 0.0);
+		}
+	}
+	*/
+	/*
 	mrHandle = modelRenders.Append(ModelRender());
 	modelRenders.Get(mrHandle).mID = 0;
 	modelRenders.Get(mrHandle).pos = vec3(2 * 10, 0, 0 * 10);
@@ -37,99 +44,7 @@ void Renderer::Init(Camera* camera)
 	modelRenders.Get(mrHandle).size = vec3(10, 15, 10);
 	modelRenders.Get(mrHandle).material.diffuse = vec3(0.5, 0.5, 0.5);
 	modelRenders.Get(mrHandle).material.specular = vec3(0.9, 0.0, 0.0);
-
-	/*
-	for (int x = 0; x < 100; x++)
-	{
-		for (int y = 0; y < 100; y++)
-		{
-			Handle mrHandle = modelRenders.Append(ModelRender());
-			modelRenders.Get(mrHandle).mID = 0;
-			modelRenders.Get(mrHandle).pos = vec3(x * 10, 0, y * 10);
-			modelRenders.Get(mrHandle).rot = vec3(0, 0, 0);
-			modelRenders.Get(mrHandle).size = vec3(10, 10, 10);
-		}
-	}
 	*/
-	glGenVertexArrays(1, &VAO);
-	glGenBuffers(1, &VBO);
-	glGenBuffers(1, &EBO);
-
-	float vertices[] = {
-	   -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-		0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-		0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-		0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-	   -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-	   -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
-
-	   -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-		0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-		0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-		0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-	   -0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-	   -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
-
-	   -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-	   -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-	   -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-	   -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
-	   -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-	   -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
-
-		0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-		0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-		0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-		0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
-		0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-		0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
-
-	   -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
-		0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
-		0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
-		0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
-	   -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
-	   -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
-
-	   -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
-		0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
-		0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-		0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-	   -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
-	   -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
-	};
-	// fir
-
-	// CENTERED
-	/*
-	float vertices[] = { -0.5, -0.5, 0.0, 0.0,
-						 -0.5,  0.5, 0.0, 1.0,
-						  0.5,  0.5, 1.0, 1.0,
-						  0.5, -0.5, 1.0, 0.0 };
-	*/
-
-	unsigned int indices[] = {
-		0, 1, 2, 2, 3, 0, // bottom
-		4, 5, 6, 6, 7, 4, // top
-		0, 4, 7, 7, 3, 0, // back face
-		3, 7, 6, 6, 2, 3, // right face
-		1, 5, 4, 4, 0, 1, // left face
-		6, 5, 1, 1, 2, 6 // forward face
-	};
-
-	glBindVertexArray(VAO);
-
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 36 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
-
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(1);
 }
 
 void Renderer::Draw()
@@ -138,7 +53,7 @@ void Renderer::Draw()
 
 	glClearColor(5.0f / 255, 178.0f / 255, 252.0f / 255, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	vec3 center = vec3(100 * 15 / 2.0f, 0, 15 * 100 / 2.0f);
+	vec3 center = vec3(24 * 15 / 2.0f, 0, 15 * 24 / 2.0f);
 
 	/*
 	for (int i = 1; i < modelRenders.data.size(); i++)
@@ -147,6 +62,7 @@ void Renderer::Draw()
 		modelRenders.data[i].pos.y =  20 * sin(distance(modelRenders.data[i].pos, center) / 25 + timer.time / 100);
 	}
 	*/
+	
 
 	for (int i = 1; i < modelRenders.data.size(); i++)
 	{
@@ -159,7 +75,7 @@ void Renderer::Draw()
 		basicShader.setVec3("dirLight.specular", directionalLight.specular);
 
 		basicShader.setMat4("projection", projection);
-		mat4 view = camera->GetViewMatrix();
+		//view = camera->GetViewMatrix();
 		basicShader.setMat4("view", view);
 		mat4 model;
 		basicShader.setInt("pointLightsCount", 1);
@@ -201,6 +117,11 @@ void Renderer::Draw()
 	*/
 	//glDrawArrays(GL_TRIANGLES, 0, 36);
 	//glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
+}
+
+void Renderer::SetView(vec3 playerPos)
+{
+	view = lookAt(playerPos + vec3(4*2, 4*10, 4*5), playerPos, camera->Up);
 }
 
 void Renderer::ChangeProjection()

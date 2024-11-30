@@ -3,6 +3,8 @@
 #include "Timer.h"
 #include "Window.h"
 #include "Renderer.h"
+#include "Map.h"
+#include "Player.h"
 
 int main(int argc, char* argv[]) 
 {
@@ -13,6 +15,11 @@ int main(int argc, char* argv[])
     camera.Zoom = 90;
     camera.OrthographicSize = 30 ;
     renderer.Init(&camera);
+    Map map;
+    map.Init();
+    Player player;
+    player.Init();
+    player.SetMap(map);
 
     while (!input.KeyPressed(SDLK_ESCAPE))
     {
@@ -33,8 +40,9 @@ int main(int argc, char* argv[])
             if (input.KeyPressedOnce(SDLK_f))
                 renderer.ChangeProjection();
 
-            camera.ProcessMouseMovement(input.mouseX, -input.mouseY);
-
+            //camera.ProcessMouseMovement(input.mouseX, -input.mouseY);
+            player.Update();
+            renderer.SetView(renderer.modelRenders.Get(player.model).pos);
             renderer.Draw();
 
             window.SwapWindow();

@@ -21,6 +21,7 @@ class Renderer
 public:
 	void Init(Camera* camera);
 	void Draw();
+	void SetView(vec3 playerPos);
 	void ChangeProjection();
 
 	Pool<ModelRender> modelRenders;
@@ -29,6 +30,7 @@ private:
 	Shader basicShader;
 	mat4 projection;
 	mat4 perspective;
+	mat4 view;
 	mat4 orthographic;
 	ProjectionType projectionType;
 

@@ -63,6 +63,12 @@
     <ClCompile Include="glad.c">
       <Filter>Pliki źródłowe\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Pliki źródłowe\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Pliki źródłowe\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AABBCollision.h">
@@ -100,6 +106,12 @@
     </ClInclude>
     <ClInclude Include="Light.h">
       <Filter>Pliki nagłówkowe\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Pliki nagłówkowe\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Pliki nagłówkowe\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
