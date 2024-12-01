@@ -13,7 +13,7 @@ void Player::Init()
 	t = 2;
 	animating = false;
 }
-//BRB
+
 void Player::SetMap(Map map)
 {
 	currentMap = map;
@@ -36,7 +36,7 @@ void Player::SetMap(Map map)
 
 float Player::Lerp(float a, float b, float t)
 {
-	return a + t * (b - a);
+	return (1.0 - t) * a + t * b;
 }
 
 
@@ -44,47 +44,60 @@ void Player::Update()
 {
 	if (t <= 1)
 	{
-		auto x = Lerp(prevPos.x * 10, pos.x * 10, sqrt(t));
-		auto z = Lerp(prevPos.y * 10, pos.y * 10, sqrt(t));
+		float x = Lerp(prevPos.x * 10, pos.x * 10, sqrt(t));
+		float z = Lerp(prevPos.y * 10, pos.y * 10, sqrt(t));
+		float rot = Lerp(0, 90, sqrt(t));
 		renderer.modelRenders.Get(model).pos.x = x;
 		renderer.modelRenders.Get(model).pos.z = z;
 		renderer.modelRenders.Get(model).pos.y = 10 + sin(sqrt(t) * 3.1415) * 5;
+		if (prevPos.x != pos.x)
+			if(prevPos.x < pos.x)
+				renderer.modelRenders.Get(model).rot.z = -rot * 3.1415 / 180;
+			else
+				renderer.modelRenders.Get(model).rot.z = rot * 3.1415 / 180;
+
+		else
+			if (prevPos.y < pos.y)
+				renderer.modelRenders.Get(model).rot.x = rot * 3.1415 / 180;
+			else
+				renderer.modelRenders.Get(model).rot.x = -rot * 3.1415 / 180;
+
 		t += 4 * timer.deltaTime / 1000;
 
 	}
 	else
 	{
+		prevPos.x = pos.x;
+		prevPos.y = pos.y;
 		animating = false;
 		renderer.modelRenders.Get(model).pos.x = pos.x * 10;
 		renderer.modelRenders.Get(model).pos.z = pos.y * 10;
 		renderer.modelRenders.Get(model).pos.y = 10;
+		renderer.modelRenders.Get(model).rot.x = 0;
+		renderer.modelRenders.Get(model).rot.z = 0;
 	}
 
 	if (animating)
 		return;
-	if (input.KeyPressedOnce(SDLK_w))
+	if (input.KeyPressed(SDLK_s))
 		Move(pos.x, pos.y + 1);
-	if (input.KeyPressedOnce(SDLK_s))
+	else if (input.KeyPressed(SDLK_w))
 		Move(pos.x, pos.y - 1);
-	if (input.KeyPressedOnce(SDLK_a))
+	else if (input.KeyPressed(SDLK_a))
 		Move(pos.x - 1, pos.y);
-	if (input.KeyPressedOnce(SDLK_d))
+	else if (input.KeyPressed(SDLK_d))
 		Move(pos.x + 1, pos.y);
 }
 
 void Player::Move(int posX, int posY)
 {
 	//20 is max map width and height
-	if (posX < 0 || posX >= 20 || posY < 0 || posY > 20)
-		return;
+	if (posX < 0 || posX >= 20 || posY < 0 || posY >= 20) return;
 
 	if (currentMap.tiles[posX][posY].type == Walkable)
 	{
-		prevPos.x = pos.x;
-		prevPos.y = pos.y;
 		pos.x = posX;
 		pos.y = posY;
-		renderer.modelRenders.Get(model).pos = vec3(posX * 10, 10, posY * 10);
 		t = 0;
 		animating = true;
 	}

@@ -49,6 +49,7 @@ public:
 	bool quit;
 private:
 	friend class Paint;
+	friend class Renderer;
 	SDL_Window* window;
 	SDL_GLContext context;
 	bool cursorVisible;

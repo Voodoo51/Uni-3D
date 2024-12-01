@@ -42,7 +42,9 @@ int main(int argc, char* argv[])
 
             //camera.ProcessMouseMovement(input.mouseX, -input.mouseY);
             player.Update();
-            renderer.SetView(renderer.modelRenders.Get(player.model).pos);
+            vec3 target = renderer.modelRenders.Get(player.model).pos;
+            target.y = 10;
+            renderer.SetView(target);
             renderer.Draw();
 
             window.SwapWindow();
