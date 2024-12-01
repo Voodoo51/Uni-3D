@@ -9,7 +9,7 @@
 int main(int argc, char* argv[]) 
 {
     window.Init(1920 / 2, 1080 / 2);
-    timer.Init(60);
+    timer.Init(70);
     Camera camera;
     camera.MouseSensitivity = 1;
     camera.Zoom = 90;

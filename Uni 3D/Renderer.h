@@ -8,8 +8,8 @@
 #include <glm/glm.hpp>
 #include "Timer.h"
 #include "imgui.h"
-#include "imgui_impl_sdl2.h"
 #include "imgui_impl_opengl3.h"
+#include "imgui_impl_sdl2.h"
 
 using namespace glm;
 
@@ -39,6 +39,10 @@ private:
 
 	std::vector<PointLight> pointLights;
 	std::vector<Model> models;
+
+	//DO WYJEBANIA
+	bool show_demo_window = true;
+	bool show_another_window = false;
 
 	mat4 model;
 	unsigned int VAO;

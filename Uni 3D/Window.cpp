@@ -145,7 +145,7 @@ void Window::SwapWindow()
 void Window::SetCursorVisible(bool on)
 {
 	cursorVisible = on;
-
+	
 	if (on)
 	{
 		SDL_SetRelativeMouseMode(SDL_FALSE);

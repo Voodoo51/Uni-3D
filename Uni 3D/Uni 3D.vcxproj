@@ -162,7 +162,6 @@
     <ClInclude Include="AABBCollision.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="DataStructures.h" />
-    <ClInclude Include="imconfig.h" />
     <ClInclude Include="imgui.h" />
     <ClInclude Include="imgui_impl_opengl3.h" />
     <ClInclude Include="imgui_impl_opengl3_loader.h" />
@@ -186,6 +185,9 @@
   <ItemGroup>
     <Text Include="basic_fs.txt" />
     <Text Include="basic_vs.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SDL2.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
