@@ -21,7 +21,11 @@ void CreateC(std::vector<char*> words)
 
     for (int i = 0; i < strlen(words[1]); i++)
     {
-        if (!isdigit(*(words[1] + i)))
+        if (*(words[1] + i) == '\0')
+        {
+            break;
+        }
+        else if (!isdigit(*(words[1] + i)))
         {
             cli.AddLog("Pierwszy argument musi byc liczba.");
             return;
@@ -30,7 +34,11 @@ void CreateC(std::vector<char*> words)
 
     for (int i = 0; i < strlen(words[2]); i++)
     {
-        if (!isdigit(*(words[2] + i)))
+        if (*(words[1] + i) == '\0')
+        {
+            break;
+        }
+        else if (!isdigit(*(words[2] + i)))
         {
             cli.AddLog("Drugi argument musi byc liczba.");
             return;
@@ -52,8 +60,8 @@ void CLI::Draw(ImGuiIO& io)
 	static int counter = 0;
 		
 	ImGui::Begin("Konsola");                          // Create a window called "Hello, world!" and append into it.
-	char text[120];
-	ImGui::InputText("", text, IM_ARRAYSIZE(text));
+    char text[120] = {0};
+	ImGui::InputText(":Text", text, IM_ARRAYSIZE(text));
     ImGui::Separator();// Display some text (you can use a format strings too)
     ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(4, 1)); // Tighten spacing
 
@@ -99,7 +107,7 @@ void CLI::Parse()
           item[i] = itemData[i];
     }
 
-    const char* delim = " ";
+    const char* delim = " ,";
     char* context = NULL;
     char* nextToken = NULL;
 
@@ -117,7 +125,7 @@ void CLI::Parse()
 
     for (int i = 0; i < commands.size(); i++)
     {
-        if (strcmp(words[0], commands[i].signature) == 0)
+        if (strncmp(words[0], commands[i].signature, strlen(commands[i].signature)) == 0)
         {
             commands[i].Func(words);
             return;

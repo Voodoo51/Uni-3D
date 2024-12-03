@@ -1,3 +1,4 @@
 ﻿  The vcpkg manifest was disabled, but we found a manifest file in C:\Users\Szymon2\. You may want to enable vcpkg manifests in your properties page or pass /p:VcpkgEnableManifest=true to the msbuild invocation.
-  Uni 3D.cpp
+  CLI.cpp
+C:\Users\Szymon2\source\repos\Uni 3D\Uni 3D\CLI.cpp(102,40): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
   Uni 3D.vcxproj -> C:\Users\Szymon2\source\repos\Uni 3D\x64\Debug\Uni 3D.exe
