@@ -30,9 +30,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Uni 3D.cpp">
-      <Filter>Pliki źródłowe</Filter>
-    </ClCompile>
     <ClCompile Include="AABBCollision.cpp">
       <Filter>Pliki źródłowe\Engine</Filter>
     </ClCompile>
@@ -88,6 +85,12 @@
       <Filter>Pliki źródłowe\Engine</Filter>
     </ClCompile>
     <ClCompile Include="imgui_widgets.cpp">
+      <Filter>Pliki źródłowe\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Uni 3D.cpp">
+      <Filter>Pliki źródłowe</Filter>
+    </ClCompile>
+    <ClCompile Include="CLI.cpp">
       <Filter>Pliki źródłowe\Engine</Filter>
     </ClCompile>
   </ItemGroup>
@@ -156,6 +159,9 @@
       <Filter>Pliki nagłówkowe\Engine</Filter>
     </ClInclude>
     <ClInclude Include="imstb_truetype.h">
+      <Filter>Pliki nagłówkowe\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="CLI.h">
       <Filter>Pliki nagłówkowe\Engine</Filter>
     </ClInclude>
   </ItemGroup>

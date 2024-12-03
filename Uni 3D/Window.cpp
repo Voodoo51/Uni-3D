@@ -76,6 +76,7 @@ void Window::PollEvents()
 
 	while (SDL_PollEvent(&event))
 	{
+		ImGui_ImplSDL2_ProcessEvent(&event);
 		if (event.type == SDL_MOUSEWHEEL)
 		{
 			if (event.wheel.y > 0) // scroll up

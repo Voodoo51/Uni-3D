@@ -19,6 +19,8 @@ void Renderer::Init(Camera* camera)
 	projection = perspective;
 	projectionType = Perspective;
 
+	cli.Init();
+
 	pointLights.push_back(PointLight());
 	models.push_back(Model());
 	/*
@@ -134,11 +136,11 @@ void Renderer::Draw()
 	ImGui::NewFrame();
 
 	io.MousePos = ImVec2(input.mouseXPos, input.mouseYPos);
-	io.MouseDown[0] = input.MousePressed(0);
-	io.MouseDown[1] = input.MousePressed(0);
-	io.MouseDown[2] = input.MousePressed(0);
+
 
  // Calling the function of my project at the bottom.
+
+	cli.Draw(io);
 
 	if (show_demo_window)
 		ImGui::ShowDemoWindow(&show_demo_window);
@@ -148,8 +150,9 @@ void Renderer::Draw()
 		static int counter = 0;
 		
 		ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
-
+		char text[120];
 		ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
+		ImGui::InputText("test: ", text, IM_ARRAYSIZE(text));               // Display some text (you can use a format strings too)
 		ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
 		ImGui::Checkbox("Another Window", &show_another_window);
 

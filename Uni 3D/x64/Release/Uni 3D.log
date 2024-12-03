@@ -1,8 +1,8 @@
-﻿  imgui_demo.cpp
-  Renderer.cpp
+﻿  CLI.cpp
+C:\Users\blasz\source\repos\Uni 3D\CLI.cpp(94,22): warning C4267: "inicjowanie": konwersja z "size_t" do "int", możliwa utrata danych
   Trwa generowanie kodu
-  2035 of 3124 functions (65.1%) were compiled, the rest were copied from previous compilation.
-    579 functions were new in current compilation
-    146 functions had inline decision re-evaluated but remain unchanged
+  14 of 3328 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    121 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   Uni 3D.vcxproj -> C:\Users\blasz\source\repos\x64\Release\Uni 3D.exe

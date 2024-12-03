@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include "imgui_impl_sdl2.h"
 #include "Input.h"
 
 /*!

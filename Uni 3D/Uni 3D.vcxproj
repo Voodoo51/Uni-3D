@@ -138,6 +138,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AABBCollision.cpp" />
+    <ClCompile Include="CLI.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="imgui.cpp" />
     <ClCompile Include="imgui_demo.cpp" />
@@ -161,6 +162,7 @@
   <ItemGroup>
     <ClInclude Include="AABBCollision.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CLI.h" />
     <ClInclude Include="DataStructures.h" />
     <ClInclude Include="imgui.h" />
     <ClInclude Include="imgui_impl_opengl3.h" />

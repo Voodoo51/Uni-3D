@@ -2,9 +2,9 @@
 #include <SDL2/SDL.h>
 #include "Timer.h"
 #include "Window.h"
-#include "Renderer.h"
 #include "Map.h"
 #include "Player.h"
+#include "Renderer.h"
 
 int main(int argc, char* argv[]) 
 {
