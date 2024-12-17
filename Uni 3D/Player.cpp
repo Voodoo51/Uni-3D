@@ -1,6 +1,8 @@
 #pragma once
 #include "Player.h"
 
+Player player;
+
 void Player::Init()
 {
 	model = renderer.modelRenders.Append(ModelRender());
@@ -14,15 +16,15 @@ void Player::Init()
 	animating = false;
 }
 
-void Player::SetMap(Map map)
+void Player::SetMap(Map newMap)
 {
 	currentMap = map;
 
 	bool positionSet = false;
 	while (!positionSet)
 	{
-		int randomX = rand() % 20;
-		int randomY = rand() % 20;
+		int randomX = rand() % currentMap.sizeX;
+		int randomY = rand() % currentMap.sizeY;
 
 		if (map.tiles[randomX][randomY].type == Walkable)
 		{
@@ -32,6 +34,8 @@ void Player::SetMap(Map map)
 			positionSet = true;
 		}
 	}
+
+	map.change = false;
 }
 
 float Player::Lerp(float a, float b, float t)
@@ -76,6 +80,9 @@ void Player::Update()
 		renderer.modelRenders.Get(model).rot.x = 0;
 		renderer.modelRenders.Get(model).rot.z = 0;
 	}
+
+	if (map.change)
+		SetMap(map);
 
 	if (animating)
 		return;

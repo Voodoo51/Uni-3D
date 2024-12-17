@@ -4,6 +4,8 @@
 #include <cmath>
 
 class Map;
+class Tile;
+enum TileType;
 
 class Player
 {
@@ -14,10 +16,12 @@ public:
 	Handle model;
 private:
 	float Lerp(float a, float b, float t);
+	void Move(int posX, int posY);
 	bool animating;
 	float t;
-	void Move(int posX, int posY);
 	vec2 pos;
 	vec2 prevPos;
 	Map currentMap;
 };
+
+extern Player player;

@@ -8,18 +8,17 @@
 
 int main(int argc, char* argv[]) 
 {
-    window.Init(1920 / 2, 1080 / 2);
+    window.Init(1920 / 1, 1080 / 1);
     timer.Init(70);
     Camera camera;
+    camera.Position = vec3(0, 2, 0);
     camera.MouseSensitivity = 1;
     camera.Zoom = 90;
     camera.OrthographicSize = 30 ;
     renderer.Init(&camera);
-    Map map;
     map.Init();
-    Player player;
     player.Init();
-    player.SetMap(map);
+    //player.SetMap(map);
 
     while (!input.KeyPressed(SDLK_ESCAPE))
     {
@@ -37,7 +36,7 @@ int main(int argc, char* argv[])
             if (input.KeyPressed(SDLK_a))
                 camera.ProcessKeyboard(LEFT, timer.deltaTime / 1000);
             
-            if (input.KeyPressedOnce(SDLK_f))
+            if (input.KeyPressedOnce(SDLK_l))
                 renderer.ChangeProjection();
 
             //camera.ProcessMouseMovement(input.mouseX, -input.mouseY);

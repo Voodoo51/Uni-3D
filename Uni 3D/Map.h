@@ -21,5 +21,13 @@ class Map
 {
 public:
 	void Init();
-	Tile tiles[20][20];
+	void GenerateMap(int sizeX, int sizeY);
+	Tile** tiles;
+	int sizeX;
+	int sizeY;
+	bool change;
+private:
+	std::vector<Handle> handles;
 };
+
+extern Map map;

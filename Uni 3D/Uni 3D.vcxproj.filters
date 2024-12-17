@@ -172,6 +172,18 @@
     <Text Include="basic_fs.txt">
       <Filter>Pliki źródłowe\Shaders</Filter>
     </Text>
+    <Text Include="basic_flat_fs.txt">
+      <Filter>Pliki źródłowe\Shaders</Filter>
+    </Text>
+    <Text Include="basic_flat_vs.txt">
+      <Filter>Pliki źródłowe\Shaders</Filter>
+    </Text>
+    <Text Include="basic_gourard_fs.txt">
+      <Filter>Pliki źródłowe\Shaders</Filter>
+    </Text>
+    <Text Include="basic_gourard_vs.txt">
+      <Filter>Pliki źródłowe\Shaders</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll">

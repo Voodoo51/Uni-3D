@@ -185,7 +185,11 @@
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="basic_flat_fs.txt" />
+    <Text Include="basic_flat_vs.txt" />
     <Text Include="basic_fs.txt" />
+    <Text Include="basic_gourard_fs.txt" />
+    <Text Include="basic_gourard_vs.txt" />
     <Text Include="basic_vs.txt" />
   </ItemGroup>
   <ItemGroup>

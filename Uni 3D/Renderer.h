@@ -12,6 +12,13 @@
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_sdl2.h"
 
+enum ShadingType
+{
+	BlinnPhong,
+	Gourard,
+	Flat
+};
+
 using namespace glm;
 
 enum ProjectionType
@@ -27,11 +34,16 @@ public:
 	void Draw();
 	void SetView(vec3 playerPos);
 	void ChangeProjection();
+	void ChangeShading(ShadingType type);
 
 	Pool<ModelRender> modelRenders;
 private:
+
 	Camera* camera;
-	Shader basicShader;
+	Shader shader;
+	Shader blinnPhongShader;
+	Shader gourardShader;
+	Shader flatShader;
 	mat4 projection;
 	mat4 perspective;
 	mat4 view;

@@ -5,7 +5,11 @@ Renderer renderer;
 void Renderer::Init(Camera* camera)
 {
 	this->camera = camera;
-	basicShader.load("basic_vs.txt", "basic_fs.txt");
+	blinnPhongShader.load("basic_vs.txt", "basic_fs.txt");
+	gourardShader.load("basic_gourard_vs.txt", "basic_gourard_fs.txt");
+	flatShader.load("basic_flat_vs.txt", "basic_flat_fs.txt");
+	shader = blinnPhongShader;
+	glProvokingVertex(GL_FIRST_VERTEX_CONVENTION);
 
 	float aspectRatio = (float)window.SCR_WIDTH / (float)window.SCR_HEIGHT;
 	perspective = glm::perspective(glm::radians(camera->Zoom), aspectRatio, 0.1f, 10000.0f);
@@ -87,19 +91,20 @@ void Renderer::Draw()
 
 	for (int i = 1; i < modelRenders.data.size(); i++)
 	{
+		if (!modelRenders.HasIndex(i)) continue;
 		glBindVertexArray(models[modelRenders.data[i].mID].VAO);
 
-		basicShader.use();
-		basicShader.setVec3("dirLight.direction", directionalLight.direction);
-		basicShader.setVec3("dirLight.ambient", directionalLight.ambient);
-		basicShader.setVec3("dirLight.diffuse", directionalLight.diffuse);
-		basicShader.setVec3("dirLight.specular", directionalLight.specular);
+		shader.use();
+		shader.setVec3("dirLight.direction", directionalLight.direction);
+		shader.setVec3("dirLight.ambient", directionalLight.ambient);
+		shader.setVec3("dirLight.diffuse", directionalLight.diffuse);
+		shader.setVec3("dirLight.specular", directionalLight.specular);
 
-		basicShader.setMat4("projection", projection);
+		shader.setMat4("projection", projection);
 		//view = camera->GetViewMatrix();
-		basicShader.setMat4("view", view);
+		shader.setMat4("view", view);
 		mat4 model;
-		basicShader.setInt("pointLightsCount", 1);
+		shader.setInt("pointLightsCount", 1);
 
 		pointLights[0].position = camera->Position;
 
@@ -109,23 +114,23 @@ void Renderer::Draw()
 		model = glm::rotate(model, modelRenders.data[i].rot.y, vec3(0.0, 1.0, 0.0));
 		model = glm::rotate(model, modelRenders.data[i].rot.z, vec3(0.0, 0.0, 1.0));
 		model = glm::scale(model, modelRenders.data[i].size);
-		basicShader.setMat4("model", model);
+		shader.setMat4("model", model);
 
-		basicShader.setVec3("material.ambient", modelRenders.data[i].material.ambient);
-		basicShader.setVec3("material.diffuse", modelRenders.data[i].material.diffuse);
-		basicShader.setVec3("material.specular", modelRenders.data[i].material.specular);
-		basicShader.setFloat("material.shininess", modelRenders.data[i].material.shininess);
+		shader.setVec3("material.ambient", modelRenders.data[i].material.ambient);
+		shader.setVec3("material.diffuse", modelRenders.data[i].material.diffuse);
+		shader.setVec3("material.specular", modelRenders.data[i].material.specular);
+		shader.setFloat("material.shininess", modelRenders.data[i].material.shininess);
 
 		for (int l = 0; l < pointLights.size(); l++)
 		{
 			//TODO(): 
-			basicShader.setVec3("pointLights[0].position", pointLights[l].position);
-			basicShader.setFloat("pointLights[0].constant", pointLights[l].constant);
-			basicShader.setFloat("pointLights[0].linear", pointLights[l].linear);
-			basicShader.setFloat("pointLights[0].quadratic", pointLights[l].quadratic);
-			basicShader.setVec3("pointLights[0].ambient", pointLights[l].ambient);
-			basicShader.setVec3("pointLights[0].diffuse", pointLights[l].diffuse);
-			basicShader.setVec3("pointLights[0].specular", pointLights[l].specular);
+			shader.setVec3("pointLights[0].position", pointLights[l].position);
+			shader.setFloat("pointLights[0].constant", pointLights[l].constant);
+			shader.setFloat("pointLights[0].linear", pointLights[l].linear);
+			shader.setFloat("pointLights[0].quadratic", pointLights[l].quadratic);
+			shader.setVec3("pointLights[0].ambient", pointLights[l].ambient);
+			shader.setVec3("pointLights[0].diffuse", pointLights[l].diffuse);
+			shader.setVec3("pointLights[0].specular", pointLights[l].specular);
 		}
 
 		models[modelRenders.data[i].mID].Draw();
@@ -142,43 +147,19 @@ void Renderer::Draw()
 
 	cli.Draw(io);
 
-	if (show_demo_window)
-		ImGui::ShowDemoWindow(&show_demo_window);
-	// 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
-	{
-		static float f = 0.0f;
-		static int counter = 0;
-		
-		ImGui::Begin("Hello, world!");                          // Create a window called "Hello, world!" and append into it.
-		char text[120];
-		ImGui::Text("This is some useful text.");               // Display some text (you can use a format strings too)
-		ImGui::InputText("test: ", text, IM_ARRAYSIZE(text));               // Display some text (you can use a format strings too)
-		ImGui::Checkbox("Demo Window", &show_demo_window);      // Edit bools storing our window open/close state
-		ImGui::Checkbox("Another Window", &show_another_window);
+	// Create a window
+	ImGui::Begin("Renderer");
+	ImGui::Text("Tryby cieniowania:");
+;	// Add a Button
+	if (ImGui::Button("BlinnPhong")) 
+		ChangeShading(BlinnPhong);
+	if (ImGui::Button("Gourard"))
+		ChangeShading(Gourard);
+	if (ImGui::Button("Flat"))
+		ChangeShading(Flat);
 
-		ImGui::SliderFloat("float", &f, 0.0f, 1.0f);            // Edit 1 float using a slider from 0.0f to 1.0f
-		//ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
+	ImGui::End();
 
-		if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
-			counter++;
-		ImGui::SameLine();
-		ImGui::Text("counter = %d", counter);
-
-		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / io.Framerate, io.Framerate);
-		ImGui::End();
-		
-	}
-	// 3. Show another simple window.
-	if (show_another_window)
-	{
-		
-		ImGui::Begin("Another Window", &show_another_window);   // Pass a pointer to our bool variable (the window will have a closing button that will clear the bool when clicked)
-		ImGui::Text("Hello from another window!");
-		if (ImGui::Button("Close Me"))
-			show_another_window = false;
-		ImGui::End();
-		
-	}
 
 
 	ImGui::Render();
@@ -209,5 +190,21 @@ void Renderer::ChangeProjection()
 	{
 		projection = perspective;
 		projectionType = Perspective;
+	}
+}
+
+void Renderer::ChangeShading(ShadingType type)
+{
+	switch (type)
+	{
+	case BlinnPhong:
+		shader = blinnPhongShader;
+		break;
+	case Gourard:
+		shader = gourardShader;
+		break;
+	case Flat:
+		shader = flatShader;
+		break;
 	}
 }

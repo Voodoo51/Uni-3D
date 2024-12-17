@@ -21,11 +21,7 @@ void CreateC(std::vector<char*> words)
 
     for (int i = 0; i < strlen(words[1]); i++)
     {
-        if (*(words[1] + i) == '\0')
-        {
-            break;
-        }
-        else if (!isdigit(*(words[1] + i)))
+        if (!isdigit(*(words[1] + i)))
         {
             cli.AddLog("Pierwszy argument musi byc liczba.");
             return;
@@ -34,24 +30,63 @@ void CreateC(std::vector<char*> words)
 
     for (int i = 0; i < strlen(words[2]); i++)
     {
-        if (*(words[1] + i) == '\0')
-        {
-            break;
-        }
-        else if (!isdigit(*(words[2] + i)))
+        if (!isdigit(*(words[2] + i)))
         {
             cli.AddLog("Drugi argument musi byc liczba.");
             return;
         }
     }
 
-    cli.AddLog("WIP");
+    if (atoi(words[1]) <= 0 || atoi(words[2]) <= 0)
+    {
+        cli.AddLog("Argument nie moze byc rowny badz mniejszy od 0.");
+        return;
+    }
+
+    int x = atoi(words[1]);
+    int y = atoi(words[2]);
+    std::cout << "X: " << x << " Y: " << y << std::endl;
+    map.GenerateMap(x, y);
+}
+
+void SetShadingC(std::vector<char*> words)
+{
+    if (words.size() < 2)
+    {
+        cli.AddLog("Brak argumentu.");
+        return;
+    }
+
+    char* word = words[1];
+
+    if (strcmp(word, "blinnphong") == 0)
+    {
+        cli.AddLog("Zmiana cieniowania na BlinnPhong");
+        renderer.ChangeShading(BlinnPhong);
+        return;
+    }
+    if (strcmp(word, "gourard") == 0)
+    {
+        cli.AddLog("Zmiana cieniowania na Gourard");
+        renderer.ChangeShading(Gourard);
+        return;
+    }
+    if (strcmp(word, "flat") == 0)
+    {
+        cli.AddLog("Zmiana cieniowania na flat");
+        renderer.ChangeShading(Flat);
+        return;
+    }
+
+    cli.AddLog("Nie ma takiej opcji");
+    return;
 }
 
 void CLI::Init()
 {
     commands.push_back({ "help", HelpC });
     commands.push_back({ "create", CreateC });
+    commands.push_back({ "set_shading", SetShadingC });
 }
 
 void CLI::Draw(ImGuiIO& io)
@@ -61,7 +96,7 @@ void CLI::Draw(ImGuiIO& io)
 		
 	ImGui::Begin("Konsola");                          // Create a window called "Hello, world!" and append into it.
     char text[120] = {0};
-	ImGui::InputText(":Text", text, IM_ARRAYSIZE(text));
+	ImGui::InputText("", text, IM_ARRAYSIZE(text));
     ImGui::Separator();// Display some text (you can use a format strings too)
     ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(4, 1)); // Tighten spacing
 
@@ -72,7 +107,7 @@ void CLI::Draw(ImGuiIO& io)
         ImGui::TextUnformatted(item);
     }
     
-    if (input.KeyPressedOnce(SDLK_KP_ENTER))
+    if (input.KeyPressedOnce(SDLK_RETURN))
     {
         AddLog(text);
         Parse();
@@ -107,7 +142,7 @@ void CLI::Parse()
           item[i] = itemData[i];
     }
 
-    const char* delim = " ,";
+    const char* delim = " ";
     char* context = NULL;
     char* nextToken = NULL;
 
@@ -125,7 +160,7 @@ void CLI::Parse()
 
     for (int i = 0; i < commands.size(); i++)
     {
-        if (strncmp(words[0], commands[i].signature, strlen(commands[i].signature)) == 0)
+        if (strcmp(words[0], commands[i].signature) == 0)
         {
             commands[i].Func(words);
             return;
