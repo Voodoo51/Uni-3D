@@ -10,9 +10,9 @@ struct DirectionalLight
 		direction = vec3(0.0, -1.0, 1.0);
 		direction = normalize(direction);
 
-		ambient = vec3(0.2, 0.2, 0.2);
-		diffuse = vec3(0.5, 0.5, 0.5);
-		specular = vec3(0.7, 0.7, 0.7);
+		ambient = vec3(0.0, 0.0, 0.0);
+		diffuse = vec3(0.1, 0.1, 0.1);
+		specular = vec3(0.1, 0.1, 0.1);
 	}
 	vec3 direction;
 	vec3 ambient;
@@ -33,8 +33,8 @@ struct PointLight
 		quadratic = 0.032f;
 
 		ambient = vec3(0.2, 0.2, 0.2);
-		diffuse = vec3(0.5, 0.5, 0.5);
-		specular = vec3(0.7, 0.7, 0.7);
+		diffuse = vec3(1.0, 1.0, 1.0);
+		specular = vec3(0.5, 0.5, 0.5);
 	}
 
 	vec3 position;

@@ -96,7 +96,7 @@ void CLI::Draw(ImGuiIO& io)
 		
 	ImGui::Begin("Konsola");                          // Create a window called "Hello, world!" and append into it.
     char text[120] = {0};
-	ImGui::InputText("", text, IM_ARRAYSIZE(text));
+	ImGui::InputText("Text", text, IM_ARRAYSIZE(text));
     ImGui::Separator();// Display some text (you can use a format strings too)
     ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(4, 1)); // Tighten spacing
 

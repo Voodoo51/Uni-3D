@@ -6,6 +6,8 @@
 #include "Player.h"
 #include "Renderer.h"
 
+bool Camera::freeFlightOn = false;
+
 int main(int argc, char* argv[]) 
 {
     window.Init(1920 / 1, 1080 / 1);
@@ -35,15 +37,43 @@ int main(int argc, char* argv[])
                 camera.ProcessKeyboard(RIGHT, timer.deltaTime / 1000);
             if (input.KeyPressed(SDLK_a))
                 camera.ProcessKeyboard(LEFT, timer.deltaTime / 1000);
-            
+            if (input.KeyPressed(SDLK_RIGHT))
+                renderer.lightPos += vec3(timer.deltaTime / 10, 0, 0);
+            if (input.KeyPressed(SDLK_LEFT))
+                renderer.lightPos += vec3(-timer.deltaTime / 10, 0, 0);
+            if (input.KeyPressed(SDLK_UP))
+                renderer.lightPos += vec3(0, 0, -timer.deltaTime / 10);
+            if (input.KeyPressed(SDLK_DOWN))
+                renderer.lightPos += vec3(0, 0, timer.deltaTime / 10);
+            if (input.KeyPressedOnce(SDLK_0))
+            {
+                renderer.lightPos += vec3(0, -1, 0);
+                std::cout << "Y POS: " << renderer.lightPos.y << std::endl;
+            }
+            if (input.KeyPressedOnce(SDLK_1))
+            {
+                renderer.lightPos += vec3(0, 1, 0);
+                std::cout << "Y POS: " << renderer.lightPos.y << std::endl;
+            }
             if (input.KeyPressedOnce(SDLK_l))
                 renderer.ChangeProjection();
+            if (input.KeyPressedOnce(SDLK_j))
+                Camera::freeFlightOn = !Camera::freeFlightOn;
 
-            //camera.ProcessMouseMovement(input.mouseX, -input.mouseY);
             player.Update();
-            vec3 target = renderer.modelRenders.Get(player.model).pos;
-            target.y = 10;
-            renderer.SetView(target);
+            if (Camera::freeFlightOn)
+            {
+                camera.ProcessMouseMovement(input.mouseX, -input.mouseY);
+                renderer.SetView(camera.GetViewMatrix());
+            }
+            else
+            {
+                camera.Up = vec3(0, 1, 0);
+                vec3 target = renderer.modelRenders.Get(player.model).pos;
+                target.y = 10;
+                renderer.SetView(target);
+            }
+            
             renderer.Draw();
 
             window.SwapWindow();

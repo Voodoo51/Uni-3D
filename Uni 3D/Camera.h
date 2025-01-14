@@ -27,6 +27,7 @@ const float ZOOM = 45.0f;
 class Camera
 {
 public:
+	static bool freeFlightOn;
 	// camera Attributes
 	glm::vec3 Position;
 	glm::vec3 Front;

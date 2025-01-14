@@ -184,6 +184,12 @@
     <Text Include="basic_gourard_vs.txt">
       <Filter>Pliki źródłowe\Shaders</Filter>
     </Text>
+    <Text Include="postprocess_vs.txt">
+      <Filter>Pliki źródłowe\Shaders</Filter>
+    </Text>
+    <Text Include="postprocess_fs.txt">
+      <Filter>Pliki źródłowe\Shaders</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll">

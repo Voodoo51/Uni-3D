@@ -33,17 +33,21 @@ public:
 	void Init(Camera* camera);
 	void Draw();
 	void SetView(vec3 playerPos);
+	void SetView(mat4 view);
 	void ChangeProjection();
 	void ChangeShading(ShadingType type);
 
+	//only for testing
+	vec3 lightPos;
 	Pool<ModelRender> modelRenders;
 private:
-
+	void InitFrameBuffer();
 	Camera* camera;
 	Shader shader;
 	Shader blinnPhongShader;
 	Shader gourardShader;
 	Shader flatShader;
+	Shader postprocessShader;
 	mat4 projection;
 	mat4 perspective;
 	mat4 view;
@@ -56,8 +60,13 @@ private:
 	//DO WYJEBANIA
 	bool show_demo_window = true;
 	bool show_another_window = false;
-
+	unsigned int textureTest;
 	mat4 model;
+	int renderScale;
+	unsigned int framebuffer;
+	unsigned int framebufferTexture;
+	unsigned int framebufferRBO;
+	unsigned int framebufferVAO;
 	unsigned int VAO;
 	unsigned int VBO;
 	unsigned int NBO;

@@ -191,6 +191,8 @@
     <Text Include="basic_gourard_fs.txt" />
     <Text Include="basic_gourard_vs.txt" />
     <Text Include="basic_vs.txt" />
+    <Text Include="postprocess_fs.txt" />
+    <Text Include="postprocess_vs.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />

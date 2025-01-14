@@ -11,7 +11,7 @@ void Map::Init()
 {
 	srand(time(NULL));
 	change = false;
-	GenerateMap(20, 20);
+	GenerateMap(5, 5);
 }
 
 void Map::GenerateMap(int sizeX, int sizeY)
@@ -36,10 +36,13 @@ void Map::GenerateMap(int sizeX, int sizeY)
 		{
 			int randomValue = rand() % 6;
 
+			tiles[x][y].type = Walkable;
+			/*
 			if (randomValue < 3)
 				tiles[x][y].type = Walkable;
 			else
 				tiles[x][y].type = NonWalkable;
+			*/
 		}
 	}
 
@@ -52,6 +55,7 @@ void Map::GenerateMap(int sizeX, int sizeY)
 				Handle handle = renderer.modelRenders.Append(ModelRender());
 				renderer.modelRenders.Get(handle).pos = vec3(x * 10, 0, y * 10);
 				renderer.modelRenders.Get(handle).size = vec3(10, 10, 10);
+				renderer.modelRenders.Get(handle).material.color = vec3(1, 1, 1);
 				handles.push_back(handle);
 			}
 		}
