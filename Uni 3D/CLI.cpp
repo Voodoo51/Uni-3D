@@ -46,7 +46,7 @@ void CreateC(std::vector<char*> words)
     int x = atoi(words[1]);
     int y = atoi(words[2]);
     std::cout << "X: " << x << " Y: " << y << std::endl;
-    map.GenerateMap(x, y);
+    //map.GenerateMap(x, y);
 }
 
 void SetShadingC(std::vector<char*> words)

@@ -1,6 +1,6 @@
 #pragma once
 #include "Input.h"
-#include "Map.h"
+#include "GameManager.h"
 #include <cmath>
 #include <glm/gtx/rotate_vector.hpp>
 
@@ -26,6 +26,7 @@ private:
 	float Lerp(float a, float b, float t);
 	void Move(int moveX, int moveY);
 	bool CanMove(int x, int y);
+	bool CanWin(int x, int y);
 	std::vector<ivec2> containtedTiles;
 	LayingState layingState;
 	LayingState afterMoveState;
@@ -39,6 +40,9 @@ private:
 	int lastMoveY;
 	Map currentMap;
 	bool skipFrame;
+
+	bool won;
+	bool expectedWin;
 };
 
 extern Player player;

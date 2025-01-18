@@ -11,6 +11,7 @@
 #include "imgui.h"
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_sdl2.h"
+#include "FadeInOut.h"
 
 enum ShadingType
 {
@@ -41,6 +42,7 @@ public:
 	vec3 lightPos;
 	Pool<ModelRender> modelRenders;
 private:
+	friend class FadeInOut;
 	void InitFrameBuffer();
 	Camera* camera;
 	Shader shader;

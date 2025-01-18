@@ -139,6 +139,8 @@
   <ItemGroup>
     <ClCompile Include="AABBCollision.cpp" />
     <ClCompile Include="CLI.cpp" />
+    <ClCompile Include="FadeInOut.cpp" />
+    <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="imgui.cpp" />
     <ClCompile Include="imgui_demo.cpp" />
@@ -164,6 +166,8 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CLI.h" />
     <ClInclude Include="DataStructures.h" />
+    <ClInclude Include="FadeInOut.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="imgui.h" />
     <ClInclude Include="imgui_impl_opengl3.h" />
     <ClInclude Include="imgui_impl_opengl3_loader.h" />

@@ -6,7 +6,8 @@
 enum TileType
 {
 	Walkable,
-	NonWalkable
+	NonWalkable,
+	WalkableWin
 };
 
 class Tile
@@ -22,6 +23,13 @@ class Map
 public:
 	void Init();
 	void GenerateMap(int sizeX, int sizeY);
+	void InitTilesMemory();
+	void GenerateModels();
+	void GenerateMap0();
+	void GenerateMap1();
+	void GenerateMap2();
+	void FreeHandles();
+	ivec2 spawn;
 	Tile** tiles;
 	int sizeX;
 	int sizeY;
@@ -30,4 +38,4 @@ private:
 	std::vector<Handle> handles;
 };
 
-extern Map map;
+//extern Map map;

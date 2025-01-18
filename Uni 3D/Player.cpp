@@ -20,6 +20,8 @@ void Player::Init()
 	lastMoveX = 0;
 	lastMoveY = 0;
 
+	won = false;
+
 	layingState = Upwards;
 	afterMoveState = Upwards;
 	t = 2;
@@ -28,8 +30,9 @@ void Player::Init()
 
 void Player::SetMap(Map newMap)
 {
-	currentMap = map;
+	currentMap = newMap;
 
+	/*
 	bool positionSet = false;
 	while (!positionSet)
 	{
@@ -49,9 +52,17 @@ void Player::SetMap(Map newMap)
 			positionSet = true;
 		}
 	}
+	*/
+	containtedTiles.clear();
+	containtedTiles.push_back(currentMap.spawn);
+	pos = vec2(currentMap.spawn.x, currentMap.spawn.y);
+	layingState = Upwards;
+	afterMoveState = Upwards;
 
 	skipFrame = false;
-	map.change = false;
+	currentMap.change = false;
+	won = false;
+	expectedWin = false;
 }
 
 float Player::Lerp(float a, float b, float t)
@@ -62,6 +73,22 @@ float Player::Lerp(float a, float b, float t)
 
 void Player::Update()
 {
+	if (won)
+	{
+		float prevY = 15;
+		float targetY = 0;
+
+		float y = Lerp(prevY, targetY, pow(t,2));
+		renderer.modelRenders.Get(model).pos.y = y;
+		t += 4 * timer.deltaTime / 1000;
+		fadeInOut.fadeType = In;
+		if (t >= 1)
+		{
+			gameManager.OnGameWon();
+		}
+		return;
+	}
+
 	if (Camera::freeFlightOn) return; 
 	if (t <= 1)
 	{
@@ -158,7 +185,12 @@ void Player::Update()
 	}
 	else
 	{
-	
+		won = expectedWin;
+		if (won)
+		{
+			t = 0;
+		}
+
 		animating = false;
 		
 		layingState = afterMoveState;
@@ -191,8 +223,8 @@ void Player::Update()
 		}
 	}
 
-	if (map.change)
-		SetMap(map);
+	//if (currentMap.change)
+	//	SetMap(map);
 
 	if (animating)
 		return;
@@ -220,7 +252,7 @@ void Player::Move(int moveX, int moveY)
 
 	bool canMove = false;	
 
-	auto CoverOneTile = [this, &canMove](int i, int moveX, int moveY, int removeCount)
+	auto CoverOneTile = [this, &canMove](int i, int moveX, int moveY, int removeCount, bool ignoreWin = false)
 		{
 			containtedTiles.push_back(ivec2(containtedTiles[i].x + moveX, containtedTiles[i].y + moveY));
 
@@ -229,7 +261,14 @@ void Player::Move(int moveX, int moveY)
 				containtedTiles.erase(containtedTiles.begin());
 			}
 
+			if (!ignoreWin)
+			{
+				expectedWin = CanWin(containtedTiles[0].x, containtedTiles[0].y);
+			}
+
 			canMove = true;
+
+			
 		};
 
 	auto CoverTwoTiles = [this, &canMove](int moveX, int moveY, int removeCount)
@@ -254,8 +293,8 @@ void Player::Move(int moveX, int moveY)
 				CanMove(containtedTiles[0].x + moveX * 2, containtedTiles[0].y + moveY * 2))
 			{				
 				
-				CoverOneTile(0, moveX, moveY, 0);
-				CoverOneTile(0, moveX * 2, moveY * 2, 1);
+				CoverOneTile(0, moveX, moveY, 0, true);
+				CoverOneTile(0, moveX * 2, moveY * 2, 1, true);
 				/*
 				containtedTiles.push_back(ivec2(containtedTiles[0].x + moveX, containtedTiles[0].y + moveY));
 				containtedTiles.push_back(ivec2(containtedTiles[0].x + moveX * 2, containtedTiles[0].y + moveY * 2));
@@ -410,8 +449,16 @@ void Player::Move(int moveX, int moveY)
 
 bool Player::CanMove(int x, int y)
 {
-	if (x < 0 || x >= map.sizeX || y < 0 || y >= map.sizeY) return false;
-	if (currentMap.tiles[x][y].type != Walkable) return false;
+	if (x < 0 || x >= currentMap.sizeX || y < 0 || y >= currentMap.sizeY) return false;
+	if (currentMap.tiles[x][y].type == NonWalkable) return false;
+
+	return true;
+}
+
+bool Player::CanWin(int x, int y)
+{
+	if (x < 0 || x >= currentMap.sizeX || y < 0 || y >= currentMap.sizeY) return false;
+	if (currentMap.tiles[x][y].type != WalkableWin) return false;
 
 	return true;
 }

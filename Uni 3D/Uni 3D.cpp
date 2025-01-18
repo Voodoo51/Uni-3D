@@ -4,6 +4,7 @@
 #include "Window.h"
 #include "Map.h"
 #include "Player.h"
+#include "GameManager.h"
 #include "Renderer.h"
 
 bool Camera::freeFlightOn = false;
@@ -18,11 +19,10 @@ int main(int argc, char* argv[])
     camera.Zoom = 90;
     camera.OrthographicSize = 30 ;
     renderer.Init(&camera);
-    map.Init();
+    gameManager.Init();
     player.Init();
-    //player.SetMap(map);
 
-    while (!input.KeyPressed(SDLK_ESCAPE))
+    while (!input.KeyPressed(SDLK_ESCAPE) && !window.quit)
     {
         timer.Tick();
         if (timer.CanUpdate())
@@ -45,6 +45,9 @@ int main(int argc, char* argv[])
                 renderer.lightPos += vec3(0, 0, -timer.deltaTime / 10);
             if (input.KeyPressed(SDLK_DOWN))
                 renderer.lightPos += vec3(0, 0, timer.deltaTime / 10);
+
+            fadeInOut.Update();
+
             if (input.KeyPressedOnce(SDLK_0))
             {
                 renderer.lightPos += vec3(0, -1, 0);
