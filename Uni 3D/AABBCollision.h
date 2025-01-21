@@ -3,12 +3,11 @@
 #include "DataStructures.h"
 #include <glm/glm.hpp>
 
+
+using namespace glm;
 /*!
 	Klasa pozwalająca na wykrywanie i rozwiązywanie kolizji.
 */
-
-using namespace glm;
-
 class AABBCollision
 {
 public:

@@ -3,6 +3,9 @@
 
 using namespace glm;
 
+/*!
+	Struktura reprezentujaca swiatlo kierunkowe (np. slonce).
+*/
 struct DirectionalLight
 {
 	DirectionalLight()
@@ -14,14 +17,33 @@ struct DirectionalLight
 		diffuse = vec3(0.1, 0.1, 0.1);
 		specular = vec3(0.1, 0.1, 0.1);
 	}
+
+	/*!
+		Kierunek swiatla.
+	*/
 	vec3 direction;
+	/*!
+		Kolor komponentu ambient.
+	*/
 	vec3 ambient;
+	/*!
+		Kolor komponentu diffuse.
+	*/
 	vec3 diffuse;
+	/*!
+		Kolor komponentu specular.
+	*/
 	vec3 specular;
 };
 
+/*!
+		Instancja swiatla kierunkowego (silnik ma wsparcie tylko pod jedna instancje tego typu swiatla).
+*/
 extern DirectionalLight directionalLight;
 
+/*!
+		Struktura swiatla punktowego.
+*/
 struct PointLight
 {
 	PointLight()
@@ -37,13 +59,37 @@ struct PointLight
 		specular = vec3(0.5, 0.5, 0.5);
 	}
 
+	/*!
+		Pozycja swiatla.
+	*/
 	vec3 position;
 
+	/*!
+		Zmienna constant wplywajaca stale na tlumienie swiatla.
+		https://learnopengl.com/Lighting/Light-casters
+	*/
 	float constant;
+	/*!
+		Zmienna linear wplywajaca liniowo na tlumienie swiatla.
+		https://learnopengl.com/Lighting/Light-casters
+	*/
 	float linear;
+	/*!
+		Zmienna quadratic wplywajaca kwadratowo na tlumienie swiatla.
+		https://learnopengl.com/Lighting/Light-casters
+	*/
 	float quadratic;
 
+	/*!
+		Kolor komponentu ambient.
+	*/
 	vec3 ambient;
+	/*!
+		Kolor komponentu diffuse.
+	*/
 	vec3 diffuse;
+	/*!
+		Kolor komponentu specular.
+	*/
 	vec3 specular;
 };

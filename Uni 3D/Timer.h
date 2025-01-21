@@ -28,6 +28,9 @@ public:
 	*/
 	float deltaTime;
 
+	/*!
+	    Czas ktory minal od zaczecia programu.
+	*/
 	float time;
 private:
 	int capLimit;

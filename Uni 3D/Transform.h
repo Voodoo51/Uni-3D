@@ -5,7 +5,7 @@
 
 using namespace glm;
 /*!
-	Struktura zawierająca informacje o pozycji, rozmiarze i kącie.
+	Struktura zawierająca informacje o pozycji, rozmiarze i kącie (w 2D).
 */
 struct Transform
 {
@@ -14,4 +14,7 @@ struct Transform
 	float angle = 0;
 };
 
+/*!
+	Pool wszystkich instancji klasy Transform w grze.
+*/
 extern Pool<Transform> transforms;

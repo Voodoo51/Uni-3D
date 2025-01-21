@@ -8,6 +8,9 @@ class Map;
 class Tile;
 enum TileType;
 
+/*!
+	Stany ulozenia gracza.
+*/
 enum LayingState
 {
 	Upwards,
@@ -15,12 +18,27 @@ enum LayingState
 	DownUp
 };
 
+/*!
+	Klasa reprezentujaca gracza.
+*/
 class Player
 {
 public:
+	/*!
+		Funkcja inicjalizujaca.
+	*/
 	void Init();
+	/*!
+		Funkcja ustawiajaca mape gracza i resetujaca jego stan.
+	*/
 	void SetMap(Map map);
+	/*!
+		Funkcja wykonywujaca logike gracza.
+	*/
 	void Update();
+	/*!
+		Handle na ModelRender gracza.
+	*/
 	Handle model;
 private:
 	float Lerp(float a, float b, float t);

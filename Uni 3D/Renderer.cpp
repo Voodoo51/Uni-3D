@@ -42,7 +42,7 @@ void Renderer::Init(Camera* camera)
 	models[0].LoadTexture("Textures/blankBlack.png");
 	models[0].LoadTexture("Textures/Tiles093_1K-PNG_NormalGL.png");
 
-	models[0].LoadTexture("Textures/Tiles093_1K-PNG_Displacement.png");
+	//models[0].LoadTexture("Textures/Tiles093_1K-PNG_Displacement.png");
 	//models[0].LoadTexture("Textures/parallaxTest.png");
 	//models[0].LoadTexture("Textures/cobbleTilesRoughness.jpg");
 	//models[0].LoadTexture("Textures/cobbleTilesNormal.jpg");

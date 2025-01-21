@@ -8,9 +8,9 @@ void Player::Init()
 	model = renderer.modelRenders.Append(ModelRender());
 	renderer.modelRenders.Get(model).pos = vec3(0, 20, 0);
 	renderer.modelRenders.Get(model).size = vec3(10, 20, 10);
-	
 	renderer.modelRenders.Get(model).material.color = vec3(1, 0.0, 0.0);
-	
+	renderer.modelRenders.Get(model).mID = 0;
+
 	/*
 	renderer.modelRenders.Get(model).material.ambient = vec3(1.0, 0.0, 0.0);
 	renderer.modelRenders.Get(model).material.diffuse = vec3(0.5, 0.0, 0.0);

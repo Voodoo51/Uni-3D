@@ -13,6 +13,9 @@
 #include "imgui_impl_sdl2.h"
 #include "FadeInOut.h"
 
+/*!
+	Typ cieniowania (aktualnie dziala tylko BlinnPhong, reszta shaderow pod inne cieniowania nie ma wsparcia pod tekstury).
+*/
 enum ShadingType
 {
 	BlinnPhong,
@@ -22,24 +25,53 @@ enum ShadingType
 
 using namespace glm;
 
+/*!
+	Typ rzutowania.
+*/
 enum ProjectionType
 {
 	Perspective,
 	Orthographic
 };
 
+/*!
+		Klasa odpowiedzialna za rysowanie.
+*/
 class Renderer
 {
 public:
+	/*!
+		Funkcja inicjalizujaca.
+	*/
 	void Init(Camera* camera);
+	/*!
+		Funkcja odpowiedzialna za rysowanie obiektow.
+	*/
 	void Draw();
+	/*!
+		Funkcja ustawiajaca macierz widoku na podstawie przekazanego wektora.
+	*/
 	void SetView(vec3 playerPos);
+	/*!
+		Funkcja ustawiajaca macierz widoku na przekazana w argumencie macierz. 
+	*/
 	void SetView(mat4 view);
+	/*!
+		Funkcja zmieniajaca rzutowanie.
+	*/
 	void ChangeProjection();
+	/*!
+		Funkcja zmieniajaca cieniowanie.
+	*/
 	void ChangeShading(ShadingType type);
 
-	//only for testing
+	/*!
+			Pozycja swiatla.
+	*/
 	vec3 lightPos;
+	/*!
+			Pool zawierajacy wszystkie instancje klasy ModelRender w grze.
+	*/
 	Pool<ModelRender> modelRenders;
 private:
 	friend class FadeInOut;
@@ -75,4 +107,7 @@ private:
 	unsigned int EBO;
 };
 
+/*!
+		Instancja renderera.
+*/
 extern Renderer renderer;

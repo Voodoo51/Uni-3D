@@ -1,5 +1,7 @@
 C:\Users\blasz\source\repos\Uni 3D\AABBCollision.cpp;C:\Users\blasz\source\repos\Uni 3D\x64\Debug\AABBCollision.obj
 C:\Users\blasz\source\repos\Uni 3D\CLI.cpp;C:\Users\blasz\source\repos\Uni 3D\x64\Debug\CLI.obj
+C:\Users\blasz\source\repos\Uni 3D\FadeInOut.cpp;C:\Users\blasz\source\repos\Uni 3D\x64\Debug\FadeInOut.obj
+C:\Users\blasz\source\repos\Uni 3D\GameManager.cpp;C:\Users\blasz\source\repos\Uni 3D\x64\Debug\GameManager.obj
 C:\Users\blasz\source\repos\Uni 3D\glad.c;C:\Users\blasz\source\repos\Uni 3D\x64\Debug\glad.obj
 C:\Users\blasz\source\repos\Uni 3D\imgui.cpp;C:\Users\blasz\source\repos\Uni 3D\x64\Debug\imgui.obj
 C:\Users\blasz\source\repos\Uni 3D\imgui_demo.cpp;C:\Users\blasz\source\repos\Uni 3D\x64\Debug\imgui_demo.obj

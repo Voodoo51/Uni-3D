@@ -1,8 +1,93 @@
-﻿  Uni 3D.cpp
-C:\Users\blasz\source\repos\Uni 3D\Uni 3D.cpp(69,59): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\blasz\source\repos\Uni 3D\Uni 3D.cpp(69,50): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+﻿  Player.cpp
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(70,23): warning C4244: "return": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(81,37): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(131,32): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(135,32): warning C4244: "argument": konwersja z "double" do "float", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(147,61): warning C4244: "=": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(147,61): warning C4244:         with
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(147,61): warning C4244:         [
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(147,61): warning C4244:             T=float
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(147,61): warning C4244:         ]
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(149,60): warning C4244: "=": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(149,60): warning C4244:         with
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(149,60): warning C4244:         [
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(149,60): warning C4244:             T=float
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(149,60): warning C4244:         ]
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(152,60): warning C4244: "=": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(152,60): warning C4244:         with
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(152,60): warning C4244:         [
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(152,60): warning C4244:             T=float
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(152,60): warning C4244:         ]
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(154,61): warning C4244: "=": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(154,61): warning C4244:         with
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(154,61): warning C4244:         [
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(154,61): warning C4244:             T=float
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(154,61): warning C4244:         ]
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(160,67): warning C4244: "=": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(160,67): warning C4244:         with
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(160,67): warning C4244:         [
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(160,67): warning C4244:             T=float
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(160,67): warning C4244:         ]
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(162,67): warning C4244: "=": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(162,67): warning C4244:         with
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(162,67): warning C4244:         [
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(162,67): warning C4244:             T=float
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(162,67): warning C4244:         ]
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(165,60): warning C4244: "=": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(165,60): warning C4244:         with
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(165,60): warning C4244:         [
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(165,60): warning C4244:             T=float
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(165,60): warning C4244:         ]
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(167,61): warning C4244: "=": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(167,61): warning C4244:         with
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(167,61): warning C4244:         [
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(167,61): warning C4244:             T=float
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(167,61): warning C4244:         ]
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(173,61): warning C4244: "=": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(173,61): warning C4244:         with
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(173,61): warning C4244:         [
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(173,61): warning C4244:             T=float
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(173,61): warning C4244:         ]
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(175,60): warning C4244: "=": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(175,60): warning C4244:         with
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(175,60): warning C4244:         [
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(175,60): warning C4244:             T=float
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(175,60): warning C4244:         ]
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(178,67): warning C4244: "=": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(178,67): warning C4244:         with
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(178,67): warning C4244:         [
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(178,67): warning C4244:             T=float
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(178,67): warning C4244:         ]
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(180,67): warning C4244: "=": konwersja z "double" do "T", możliwa utrata danych
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(180,67): warning C4244:         with
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(180,67): warning C4244:         [
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(180,67): warning C4244:             T=float
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(180,67): warning C4244:         ]
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(213,57): warning C4305: "=": obcięcie z "double" do "T"
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(213,57): warning C4305:         with
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(213,57): warning C4305:         [
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(213,57): warning C4305:             T=float
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(213,57): warning C4305:         ]
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(219,57): warning C4305: "=": obcięcie z "double" do "T"
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(219,57): warning C4305:         with
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(219,57): warning C4305:         [
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(219,57): warning C4305:             T=float
+C:\Users\blasz\source\repos\Uni 3D\Player.cpp(219,57): warning C4305:         ]
+C:\Users\blasz\source\repos\Uni 3D\DataStructures.h(110,24): warning C4267: "=": konwersja z "size_t" do "unsigned int", możliwa utrata danych
+  (kompilowanie pliku źródłowego „Player.cpp”)
+      C:\Users\blasz\source\repos\Uni 3D\DataStructures.h(110,24):
+      kontekst tworzenia wystąpienia szablonu (najpierw najstarszy) to
+          C:\Users\blasz\source\repos\Uni 3D\Renderer.h(75,20):
+          zobacz odwołanie do kompilowanego tworzenia wystąpienia „Pool<ModelRender>” klasy klasa szablon
+          C:\Users\blasz\source\repos\Uni 3D\DataStructures.h(99,9):
+          podczas kompilowania funkcji składowej „Handle Pool<ModelRender>::AppendEmpty(void)” klasy klasa szablon
+              C:\Users\blasz\source\repos\Uni 3D\DataStructures.h(48,19):
+              zobacz pierwsze odwołanie do elementu „Pool<ModelRender>::AppendEmpty” w „Pool<ModelRender>::Append”
+              C:\Users\blasz\source\repos\Uni 3D\Player.cpp(8,8):
+              zobacz pierwsze odwołanie do elementu „Pool<ModelRender>::Append” w „Player::Init”
+  
   Trwa generowanie kodu
-  1 of 2670 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  2 of 2670 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
     38 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
